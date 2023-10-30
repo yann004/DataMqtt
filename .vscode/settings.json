@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "java_step/lib_eclipse/org.eclipse.paho.client.mqttv3_1.2.5.jar"
+    ]
+}

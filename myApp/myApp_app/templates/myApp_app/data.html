@@ -1,0 +1,15 @@
+<!-- mqtt_app/templates/mqtt_app/mqttdata_list.html -->
+
+<html>
+<head>
+    <title>Données MQTT</title>
+</head>
+<body>
+    <h1>Données MQTT</h1>
+    <ul>
+        {% for data in mqttdata_list %}
+            <li>{{ data.timestamp }}: {{ data.data }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
