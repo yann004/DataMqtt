@@ -29,9 +29,9 @@ ALLOWED_HOSTS = []
 
 # settings.py
 
-MQTT_BROKER_HOST = "your_mqtt_broker_host"
+MQTT_BROKER_HOST = "tcp://broker.hivemq.com:1883"
 MQTT_BROKER_PORT = 1883  # Le port MQTT par défaut
-MQTT_TOPIC = "your_mqtt_topic"
+MQTT_TOPIC = "sensor/data"
 
 
 

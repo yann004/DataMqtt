@@ -1,14 +1,15 @@
 # myApp_app/mqtt.py
 
-import os
-from django.conf import settings
-from django.core.wsgi import get_wsgi_application
+#import os
+#from django.conf import settings
+#from django.core.wsgi import get_wsgi_application
 
 import paho.mqtt.client as mqtt
 
 from myApp import settings 
 
 def on_connect(client, userdata, flags, rc):
+    
     client.subscribe(settings.MQTT_TOPIC)
 
 def on_message(client, userdata, msg):
