@@ -5,12 +5,12 @@
 #include <DHT_U.h>
 
 // Remplacez ces valeurs par vos informations de réseau WiFi et MQTT
-const char* ssid = "NomDuReseauWiFi";
-const char* password = "MotDePasseWiFi";
-const char* mqtt_server = "AdresseServeurMQTT";
+const char* ssid = "Thornton759";
+const char* password = "Bathurst2023";
+const char* mqtt_server = "broker.hivemq.com";
 const int mqtt_port = 1883;
-const char* mqtt_user = "NomUtilisateurMQTT";
-const char* mqtt_password = "MotDePasseMQTT";
+const char* mqtt_user = "yann004";
+const char* mqtt_password = "";
 const char* mqtt_topic = "sensor_data";
 
 // Configuration du capteur DHT22
@@ -20,20 +20,6 @@ const char* mqtt_topic = "sensor_data";
 WiFiClient espClient;
 PubSubClient client(espClient);
 DHT dht(DHTPIN, DHTTYPE);
-
-void setup() {
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Connecting to WiFi...");
-  }
-
-  client.setServer(mqtt_server, mqtt_port);
-  client.setCallback(callback);
-  dht.begin();
-}
 
 void callback(char* topic, byte* payload, unsigned int length) {
   // Gérer les messages MQTT reçus, si nécessaire
@@ -53,6 +39,21 @@ void reconnect() {
   }
 }
 
+void setup() {
+  Serial.begin(9600);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+
+  client.setServer(mqtt_server, mqtt_port);
+  client.setCallback(callback);
+  dht.begin();
+}
+
+
 void loop() {
   if (!client.connected()) {
     reconnect();
@@ -60,7 +61,8 @@ void loop() {
 
   client.loop();
 
-  // Lire les données du capteur DHT22
+   //Lire les données du capteur DHT22
+
   float humidity = dht.readHumidity();
   float temperature = dht.readTemperature();
 
